@@ -4,5 +4,6 @@ const user = require('./modules/user')
 const { apiErrorHandler } = require('../middleware/error-handler')
 
 router.use('/users', user)
+router.use('/tweets',tweet)
 router.use('/', apiErrorHandler)
 module.exports = router
