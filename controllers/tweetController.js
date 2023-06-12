@@ -115,9 +115,7 @@ const tweetController = {
             { model: Reply },
             { model: Like }
           ],
-          order: [['createdAt', 'DESC']],
-          raw: true,
-          nest: true
+          order: [['createdAt', 'DESC']]
         }),
         Like.findAll({ where: { UserId: currentUserId }, raw: true })
       ])
@@ -136,6 +134,8 @@ const tweetController = {
         tweetOwnerAccount: tweet.User.account,
         tweetOwnerAvatar: tweet.User.avatar,
         tweetTime: tweet.createdAt,
+        replyCount: tweet.Replies.length,
+        likeCount: tweet.Likes.length,
         isLiked: currentUserLikes.includes(tweet.id)
       }
 
